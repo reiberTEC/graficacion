@@ -89,7 +89,6 @@ for c in contornos:
 print("frutas rojas", contador)
 
 
-# (Visualización opcional, NO parte del análisis)
 rojo = cv.bitwise_and(img, img, mask=limpia)
 cv.imshow("Original", img)
 cv.imshow("Mask Rojo", limpia)
