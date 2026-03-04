@@ -23,10 +23,12 @@ mask_amarillo = cv.inRange(hsv, amarilloInf, amarilloSup)
 verdeInf = np.array([40, 150, 100])
 verdeSup = np.array([80, 255, 255])
 mask_verde = cv.inRange(hsv, verdeInf, verdeSup)
+
 panel = np.ones((5,5), np.uint8) 
 #amarillo
 limpia_amarillo = cv.morphologyEx(mask_amarillo, cv.MORPH_OPEN, panel)
 limpia_amarillo = cv.morphologyEx(limpia_amarillo, cv.MORPH_CLOSE, panel)
+
 contornos_amarillo, _ = cv.findContours(
     limpia_amarillo,
     cv.RETR_EXTERNAL,       
@@ -92,7 +94,7 @@ print("frutas rojas", contador)
 rojo = cv.bitwise_and(img, img, mask=limpia)
 cv.imshow("Original", img)
 cv.imshow("Mask Rojo", limpia)
-cv.imshow("Rojo", rojo)
+cv.imshow("Rojo", hsv)
 cv.imshow("Mask Amarillo", limpia_amarillo)
 cv.imshow("Mask Verde", limpia_verde)
 
